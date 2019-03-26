@@ -5,7 +5,7 @@ categories: [raspberry]
 tags: [raspberry, vpn, pihole, openvpn]
 ---
 
-In this tutorial you will learn how to install an OpenVpn server on your home network.
+In this tutorial you will learn how to install the OpenVpn server on your home network.
 With OpenVPN installed you will have a fully functional VPNServer in your home.
 
 With this setup you can protect your internet traffic when you are connected to public or non trusted wifi networks. For example, if you go on a trip and you need to connect to the hotel public wifi you can encrypt all your network traffic from the hotel to your home. After the traffic reaches your home it will exit through your ISP and come back to you encrypted again.
@@ -13,8 +13,8 @@ With this setup you can protect your internet traffic when you are connected to 
 **Goals:**
 
 1. Install OpenVpn server on raspberry PI
-2. Make OpenVpn accessible from outside the home network, ie, from Internet
-3. Connect to VPN from a IOS device.
+2. Make OpenVpn accessible from outside the home network, i.e., from Internet
+3. Connect to VPN using the OpenVPN client from a IOS device and from Windows 10.
 
 ### Requirements
 
@@ -24,7 +24,7 @@ In this tutorial I used a Raspberry Pi 1B, it should be enough to run OpenVpn fo
 If your ISP doesn't provide you a static IP address you will need a DDNS.
 If you want a free solution you can use [Duck DNS](https://www.duckdns.org). Check the other tutorial on this site about how you can configure DuckDNS on Raspberry.
 3. **Open Vpn client**  
-You should install OpenVpn client on your client device (IOS, Android, windows etc...)
+You must install OpenVpn client on your client device (IOS, Android, windows etc...)
 
 
 ### Install OpenVPN server
@@ -77,10 +77,10 @@ You should only choose TCP for specific cases. For example, if the networks wher
 11. Confirm the settings.
 ![pivpn step 11](/assets/posts/pivpn-raspberry/step_11.png)
 
-12.
+12. //todo
 ![pivpn step 12](/assets/posts/pivpn-raspberry/step_12.png)
 
-13. c
+13. Here you will select the size for the server RSA key, 2048 is a good balance between speed and security.
 ![pivpn step 13](/assets/posts/pivpn-raspberry/step_13.png)
 
 14. This step will generate the server RSA key pair and the [Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange) parameters. This step could take a lot of time... so be patient.
@@ -92,6 +92,12 @@ To avoid aborting the process due to PC sleep you should use a terminal multiple
 
 ### Generate a client
 
+Now we have OpenVPN server installed and ready to accept connections. But before that we need to generate client certificates for each client that will use the VPN.
+
+The client certificate is an RSA keypair that will be used to authenticate and secure the communication between your device and OpenVPN server.
+You will need the client certificate in order to connect to the OpenVPN server.
+
+The client generations is very easy, you just need to run the following command: `pivpn add`
 
 
 ### Speedtest
