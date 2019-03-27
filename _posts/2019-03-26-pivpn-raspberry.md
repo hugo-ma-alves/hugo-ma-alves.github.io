@@ -10,6 +10,8 @@ After completing this guide you will have a fully functional VPN Server in your 
 If you use the VPN you will be able to protect your internet traffic when you are connected to public or non trusted WiFi networks. While using the VPN your traffic is encrypted and sent directly to your home network, then it will be routed to the destination by your ISP.  
 Another advantage is that you can securely access your home network while you are away. For example, you can watch your movies stored in a local NAS, control smart lights, check the security cameras etc... All of these without exposing these services ports over the Internet!
 
+And we will also use a local PiHole as the DNS server. By using PiHole as your DNS sever you can save bandwidth, by eliminating advertisements, and block unwanted malware or tracking scripts. You can check [this guide]({% post_url 2019-03-22-pihole-vodafone %}) to see how to install PiHole on the raspberry Pi.
+
 **This is not a method to hide your data from your ISP.** If you want to achieve this you'll need to install the OpenVPN server outside your home network, or buy a VPN service. If you are worried that your ISP is spying you, then this guide is not for you. The objective for this setup is to protect your internet traffic from non trusted networks, like the WiFi that Hotels provide to their customers.
 
 ### **Objectives for this tutorial:**
@@ -198,7 +200,7 @@ To connect to the VPN you will need a VPN client, there are multiples alternativ
 For Windows, IOS and Android you can use the [Open VPN client](https://openvpn.net/community-downloads/).
 For MacOs you can use [Tunnelblick](https://tunnelblick.net/). Despite the one you choose the only thing you will need is the .ovpn file that you generated in the previous step.
 
-Bellow is the process for OpenVPN client for IOS:
+#### OpenVPN client for IOS
 
 - Download OpenVPN client from app store: https://itunes.apple.com/pt/app/openvpn-connect/id590379981?mt=8
 - Copy the .ovpn file previously generated to Icloud/Dropbox/Drive etc...
@@ -208,7 +210,20 @@ Bellow is the process for OpenVPN client for IOS:
 
 While connected to the VPN you can see a "VPN" symbol on the top left corner, right next to the WiFi symbol.
 
-![openvpn client ios ](/assets/posts/pivpn-raspberry/ios_openvpn_install.gif).
+![openvpn client windows ](/assets/posts/pivpn-raspberry/ios_openvpn_install.gif)
+
+
+#### OpenVPN client for Windows
+
+- Download OpenVPN client from https://openvpn.net/community-downloads/
+- Copy the .ovpn file previously generated to the machine
+- Right click on OpenVPN client icon on the notification area (near the clock). And then "Import File"
+- Select the .ovpn file
+- Go to the icon on the notification bar and right click it. Then click "Connect"
+- Enter the password chosen during the client creation step
+- And click ok, you are now connected!
+
+![openvpn client windows ](/assets/posts/pivpn-raspberry/windows_openvpn_install.gif)
 
 ## Results
 
