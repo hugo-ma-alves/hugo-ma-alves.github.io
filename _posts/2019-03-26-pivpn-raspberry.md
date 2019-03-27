@@ -95,7 +95,8 @@ You should only choose TCP for specific cases. For example, if the networks wher
 11. Confirm the settings.
 ![pivpn step 11](/assets/posts/pivpn-raspberry/step_11.png)
 
-12. //todo
+12. OpenVPN 2.4 has introduced some major improvements. Namely the [Elliptic Curve Crypto](https://github.com/OpenVPN/openvpn/blob/master/README.ec)(that is an alternative to RSA keys) and tls-crypt.
+Unfortunately these two features are not yet supported on OpenVPN client for IOS. So if you plan to use an IOS device then don't activate this feature. The remaining of the guide is based on having this setting disabled, there are some different steps if you choose activate 2.4 features.
 ![pivpn step 12](/assets/posts/pivpn-raspberry/step_12.png)
 
 13. Select the size for the server RSA key, 2048 is a good balance between speed and security.
