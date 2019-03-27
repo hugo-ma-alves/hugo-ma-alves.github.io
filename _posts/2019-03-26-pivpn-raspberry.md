@@ -180,16 +180,29 @@ This process will generate the `/home/pi/ovpns/my-vpn-client.ovpn` file:
     -----END OpenVPN Static key V1-----
     </tls-auth>
 
-//TODO explain file
+You can use this file with OpenVPN client app to connect to your VPN.
+Now you must copy this file to the device from where you will connect to the VPN, for example your laptop or smartphone. You can copy the file with FTP or SFTP. Or, since this file is just text, you can also copy the content of the file and paste it in a new file(my-vpn-client.ovpn) on your device.
 
 ## Connect to the VPN
 
-//TODO copy the .ovpn file and connect
+To connect to the VPN you will need a VPN client, there are multiples alternatives.
+For Windows, IOS and Android you can use the [Open VPN client](https://openvpn.net/community-downloads/).
+For MacOs you can use [Tunnelblick](https://tunnelblick.net/). Despite the one you choose the only thing you will need is the .ovpn file that you generated in the previous step.
+
 
 ## Results
 
-![pivpn speedtest](/assets/posts/pivpn-raspberry/speedtest_vpn.jpg)
+As said before you will not get the full throughput that you normal get in your home. Your speed will be limited by multiple factors:
+- You home network Upload speed
+- Raspberry Pi processing capacity
+- Visited network speed
 
-![pivpn speedtest no vpn](/assets/posts/pivpn-raspberry/speedtest_no_vpn.jpg)
+In this case my home network is 200/100 Mb/s and I tested the VPN from a WiFi network that also provides around 200/100 Mb/s.
 
-//TODO complete this section
+With this setup I could get around 10/10 Mb/s running from the Raspberry Pi 1B, this is one of the oldest Raspberry's, with a 700 MHz cpu and 512 MB of ram.
+
+Running the same test with a Raspberry Pi 3B+ I got no noticeable improvements on the speedtest
+![pivpn speedtest ](/assets/posts/pivpn-raspberry/speedtest_vpn_3b.png).
+
+The 10/10 Mb/s provided by Raspberry Pi 1B is enough to my daily browsing outside home. It was also enough to stream some series from my NAS transcoded to a Iphone screen.
+And the biggest advantage is the [power consumption](https://www.jeffgeerling.com/blogs/jeff-geerling/raspberry-pi-zero-power) of the Raspberry Pi 1B, consuming as low as 0.4W.
