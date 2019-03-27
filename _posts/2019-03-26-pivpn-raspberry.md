@@ -5,16 +5,14 @@ categories: [raspberry]
 tags: [raspberry, vpn, pihole, openvpn]
 ---
 
-In this tutorial you will learn how to install the OpenVpn server on your home network using only a Raspberry Pi.
-With OpenVPN you will have a fully functional VPN Server in your home.
+In this tutorial you will learn how to install the OpenVPN server on your home network using only a Raspberry Pi.
+After completing this guide you will have a fully functional VPN Server in your home.
+If you use the VPN you will be able to protect your internet traffic when you are connected to public or non trusted WiFi networks. While using the VPN your traffic is encrypted and sent directly to your home network, then it will be routed to the destination by your ISP.  
+Another advantage is that you can securely access your home network while you are away. For example, you can watch your movies stored in a local NAS, control smart lights, check the security cameras etc... All of these without exposing these services ports over the Internet!
 
-With this setup you can protect your internet traffic when you are connected to public or non trusted WiFi networks. For example, if you go on a trip and you need to connect to the hotel public WiFi you can encrypt all your network traffic from the hotel to your home. Then the traffic will be routed to the destination by your ISP and come back to you encrypted again.
+**This is not a method to hide your data from your ISP.** If you want to achieve this you'll need to install the OpenVPN server outside your home network, or buy a VPN service. If you are worried that your ISP is spying you, then this guide is not for you. The objective for this setup is to protect your internet traffic from non trusted networks, like the WiFi that Hotels provide to their customers.
 
-**This is not a method to hide your data from your ISP.** If you want to achieve this you'll need to install the OpenVPN server outside your home network, or buy a VPN service. If you are worried that your ISP is spying you, then this guide is not for you. The objective for this setup is to protect your internet traffic from non trusted networks, like WiFi from Hotels.
-
-Another advantage is that you can securely access your home network while you are away. For example, you can watch your movies stored in a local NAS, control smart lights etc... Without exposing these services ports over the Internet!
-
-**Objectives for this tutorial:**
+### **Objectives for this tutorial:**
 
 1. Install OpenVpn server on raspberry PI.
 
@@ -27,11 +25,11 @@ Another advantage is that you can securely access your home network while you ar
 ## Requirements
 
 1. **Raspberry Pi**  
-In this tutorial I used a Raspberry Pi 1B, it should be enough to run OpenVpn for a single user. But don't expect very high throughputs. With my home connection 200/100 Mb/s I could only get 10 Mb/s while connected to the VPN.
+In this tutorial I used a Raspberry Pi 1B, it should be enough to run OpenVPN for a single user. But don't expect very high throughputs. With my home connection 200/100 Mbps I could only get 10 Mbps while connected to the VPN.
 
 2. **A static IP or a DDNS**  
 If your ISP doesn't provide you a static IP address you will need a DDNS.
-A DDNS is just a method of automatically updating a name server. For example the domain "demo-pivpn-hugo-ma-alves.duckdns.org" will resolve to my public IP address. But because my public address changes frequently I rely on duckDns service to keep this DNS record constantly updated with my public address.  
+A DDNS is just a method of automatically updating a name server. For example the domain "demo-pivpn.duckdns.org" will resolve to my public IP address. But because my public address changes frequently I rely on duckDns service to keep this DNS record constantly updated with my public address.  
 If you want a free solution you can use [Duck DNS](https://www.duckdns.org). Check the other tutorial on this site about how you can configure DuckDNS on a Raspberry.
 
 3.  **Port forward configured for the OpenVPN server**  
@@ -152,7 +150,7 @@ This process will generate the `/home/pi/ovpns/my-vpn-client.ovpn` file:
     client
     dev tun
     proto udp
-    remote demo-pivpn-hugo-ma-alves.duckdns.org 1194
+    remote demo-pivpn.duckdns.org 1194
     resolv-retry infinite
     nobind
     persist-key
@@ -200,7 +198,17 @@ To connect to the VPN you will need a VPN client, there are multiples alternativ
 For Windows, IOS and Android you can use the [Open VPN client](https://openvpn.net/community-downloads/).
 For MacOs you can use [Tunnelblick](https://tunnelblick.net/). Despite the one you choose the only thing you will need is the .ovpn file that you generated in the previous step.
 
-//TODO complete
+Bellow is the process for OpenVPN client for IOS:
+
+- Download OpenVPN client from app store: https://itunes.apple.com/pt/app/openvpn-connect/id590379981?mt=8
+- Copy the .ovpn file previously generated to Icloud/Dropbox/Drive etc...
+- Navigate to the file and open with OpenVPN client
+- Enter the password chosen during the client creation step
+- And click connect, you are now connected!
+
+While connected to the VPN you can see a "VPN" symbol on the top left corner, right next to the WiFi symbol.
+
+![openvpn client ios ](/assets/posts/pivpn-raspberry/ios_openvpn_install.gif).
 
 ## Results
 
@@ -209,12 +217,12 @@ As said before you will not get the full throughput that you normal get in your 
 - Raspberry Pi processing capacity
 - Visited network speed
 
-In this case my home network is 200/100 Mb/s and I tested the VPN from a WiFi network that also provides around 200/100 Mb/s.
-
-With this setup I could get around 10/10 Mb/s running from the Raspberry Pi 1B, this is one of the oldest Raspberry's, with a 700 MHz cpu and 512 MB of ram.
+In this case my home network is 200/100 Mbps and I tested the VPN from a WiFi network that also provides around 200/100 Mbps.  
+With this setup I could get around 10/10 Mbps running from the Raspberry Pi 1B, this is one of the oldest Raspberry's, with a 700 MHz cpu and 512 MB of ram.
 
 Running the same test with a Raspberry Pi 3B+ I got no noticeable improvements on the speedtest
+
 ![pivpn speedtest ](/assets/posts/pivpn-raspberry/speedtest_vpn_3b.png).
 
-The 10/10 Mb/s provided by Raspberry Pi 1B is enough to my daily browsing outside home. It was also enough to stream some series from my NAS transcoded to a Iphone screen.
+The 10/10 Mbps provided by Raspberry Pi 1B is enough to my daily browsing outside home. It was also enough to stream some series from my NAS transcoded to a Iphone screen.
 And the biggest advantage is the [power consumption](https://www.jeffgeerling.com/blogs/jeff-geerling/raspberry-pi-zero-power) of the Raspberry Pi 1B, consuming as low as 0.4W.
