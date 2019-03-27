@@ -1,16 +1,16 @@
 ---
 layout: post
-title: Install a private OpenVPN server in your home network using a Raspberry Pi 1B
+title: Install a private OpenVPN server in your home network using a Raspberry Pi
 categories: [raspberry]
 tags: [raspberry, vpn, pihole, openvpn]
 ---
 
 In this tutorial you will learn how to install the OpenVPN server on your home network using only a Raspberry Pi.
 After completing this guide you will have a fully functional VPN Server in your home.
-If you use the VPN you will be able to protect your internet traffic when you are connected to public or non trusted WiFi networks. While using the VPN your traffic is encrypted and sent directly to your home network, then it will be routed to the destination by your ISP.  
+Using the VPN will protect your internet traffic when you are connected to public or non trusted WiFi networks. While using the VPN your traffic is encrypted and sent directly to your home network, then it will be routed to the destination by your ISP.  
 Another advantage is that you can securely access your home network while you are away. For example, you can watch your movies stored in a local NAS, control smart lights, check the security cameras etc... All of these without exposing these services ports over the Internet!
 
-And we will also use a local PiHole as the DNS server. By using PiHole as your DNS sever you can save bandwidth, by eliminating advertisements, and block unwanted malware or tracking scripts. You can check [this guide]({% post_url 2019-03-22-pihole-vodafone %}) to see how to install PiHole on the raspberry Pi.
+And we will also use a local PiHole as the DNS server. By using PiHole as your DNS sever you can save bandwidth, by eliminating advertisements, block unwanted malware and tracking scripts. You can check [this guide]({% post_url 2019-03-22-pihole-vodafone %}) to see how to install PiHole on the raspberry Pi.
 
 **This is not a method to hide your data from your ISP.** If you want to achieve this you'll need to install the OpenVPN server outside your home network, or buy a VPN service. If you are worried that your ISP is spying you, then this guide is not for you. The objective for this setup is to protect your internet traffic from non trusted networks, like the WiFi that Hotels provide to their customers.
 
