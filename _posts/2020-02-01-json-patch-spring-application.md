@@ -3,6 +3,7 @@ layout: post
 title: Use Json Patch in Spring application
 categories: [spring, java]
 tags: [spring, json-p, json-processing, json-patch, spring-boot, jsr-374, rest]
+excerpt_separator: <!--more-->
 ---
 
 # What is JSON Patch?
@@ -17,6 +18,8 @@ According to RFC 6902 we can define JSON patch like this:
    patch documents.
 
 Lets take as example the following JSON document. This document defines the tipical User model used by most applications.
+
+<!--more-->
 
 ```json
 {
