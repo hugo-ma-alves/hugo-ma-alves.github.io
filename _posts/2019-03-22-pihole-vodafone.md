@@ -1,22 +1,24 @@
 ---
 layout: post
-title: Usar o PI-hole como servidor DNS com o Smart router da Vodafone
+title: Usar o PI-hole como servidor DNS com o Smart router e VBox da Vodafone
 categories: [raspberry]
-tags: [raspberry, pihole, vodafone]
+tags: [raspberry, pihole, pi-hole, vodafone, vbox]
 ---
 
----
-### 17/04/2021 - Actualizado para a nova VBox
-O processo mantém-se o mesmo para anova VBox, apenas adicionei mais alguns detalhes de como obter o mac address da box.
-
----
+Neste guia vamos instalar e configurar um servidor DNS usando o PI-hole. 
+Este guia tem também como objectivo configurar o PI-hole de modo a que não interfira com o funcionamento da VBox! 
+Apesar deste guia usar o raspberry PI 3B+ como referência é válido para qualquer modelo, desde que usem o Raspbian.
 
 O router actualmente fornecido pela Vodafone, Smart Router 2.0, não permite configurar manualmente os servidores DNS anunciados por DHCP. Ao tentar alterar os servidores DNS recebemos um aviso a informar que a BOX IPTV vai deixar de funcionar.
 Este guia resolve esse problema criando um servidor DNS e DHCP local usando um Raspberry Pi.
 
-**[17/04/2021]** -> A versão de firmware mais recente já permite configurar os servidores DNS para a rede local.
+<!--more-->
 
-Além de alterar os servidores DNS este guia tem também como objectivo instalar e configurar o PI-hole de forma a poder ser usado como servidor DNS e DHCP pelos equipamentos ligados ao Smart Router 2.0. Apesar deste guia usar o raspberry PI 3B+ como referência é válido para qualquer modelo, desde que usem o Raspbian.
+---
+#### 17/04/2021 - Actualizado para a nova VBox
+* O processo mantém-se o mesmo para anova VBox, apenas adicionei mais alguns detalhes de como obter o mac address da box.
+* A versão de firmware mais recente já permite configurar os servidores DNS para a rede local.
+---
 
 O [PI-hole](https://pi-hole.net/) é uma aplicação open source que tem como objectivo bloquear anúncios e mecanismos de tracking na internet. Para cumprir este objectivo actua como um servidor DNS dentro da nossa rede.
 Após instalado e configurado vai ser responsável por resolver os nomes dos domínios em endereços IP, caso estes domínios pertençam a uma lista negra de domínios usados para publicidade ou tracking serão barrados.
